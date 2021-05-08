@@ -1,7 +1,6 @@
-#define pin_sensor_ph 18
-#define pin_sensor_temp 15
+#define pin_sensor_ph 34
+#define pin_sensor_temp 32
 #define relay 10
-
 
 #define myapi "3Q78NW6JQJD18X4T"
 #define myid  1383116
