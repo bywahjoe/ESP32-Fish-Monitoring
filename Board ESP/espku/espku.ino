@@ -9,6 +9,8 @@
 #include "ThingSpeak.h"
 #include "pinku.h"
 
+#define SHOWDEBUG
+
 OneWire oneWire(pin_sensor_temp);
 DallasTemperature sensors(&oneWire);
 LiquidCrystal_I2C lcd(0x27, 16, 2);
@@ -31,7 +33,8 @@ BLYNK_WRITE(V10) {
 
 }
 void notif() {
-  if (valph < 6.00 || valph > 7.50) Blynk.notify("PH is Not 6 - 7.5");
+  if (valph < 6.50 || valph > 8.00) Blynk.notify("PH is Not 6.50 - 8");
+  else if (valsuhu < 20 || valsuhu > 30) Blynk.notify("Temp is Not 20 - 30 Celcius");
 }
 void setup() {
   pinMode(relay, OUTPUT);
@@ -53,11 +56,16 @@ void setup() {
 
 void loop() {
   unsigned long now = millis();
-//  valph = random(4, 10);
-//  valsuhu = random(27, 40);
+  //  valph = random(4, 10);
+  //  valsuhu = random(27, 40);
   valph = cekPH();
   valsuhu = cekSuhu();
 
+  #ifdef SHOWDEBUG
+    Serial.print("MYPH   : ");Serial.println(valph);
+    Serial.print("MYSuhu : ");Serial.println(valsuhu);
+  #endif
+  
   tampil(valph, valsuhu);
   
   if (now - before >= interval) {
