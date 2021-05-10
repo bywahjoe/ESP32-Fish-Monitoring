@@ -23,8 +23,9 @@ const long interval = 15500;
 unsigned long before = 0;
 
 float valph, valsuhu;
+String statusWifi = "Connected";
 
-BLYNK_WRITE(V10) {
+BLYNK_WRITE(V14) {
   int klik = param.asInt();
   Serial.print("BUTTON 1 :"); Serial.println(klik);
 
@@ -54,7 +55,15 @@ void setup() {
     lcd.print("Connecting WiFi Ewake");
     lcd.setCursor(1, 1);
     lcd.print(retry);
-    retry++;
+
+    if (retry > 100) {
+      statusWifi = "Error";
+      break;
+    }
+    else {
+      retry++;
+    }
+
     delay(500);
   }
 
@@ -65,7 +74,7 @@ void setup() {
 
   lcd.clear();
   lcd.setCursor(0, 0);
-  lcd.print("WiFi Connected");
+  lcd.print("WiFi "); lcd.print(statusWifi);
   lcd.setCursor(4, 1);
   lcd.print("EWAKE START");
   delay(2000);
