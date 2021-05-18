@@ -136,7 +136,10 @@ float cekSuhu() {
   float val;
   sensors.requestTemperatures();
   val = sensors.getTempCByIndex(0);
-
+  
+  if (val>0) {val=val+2;}
+  else  {val=val-2;}
+  
   //  Serial.print("Suhu : "); Serial.println(val);
   return val;
 }
