@@ -50,7 +50,7 @@ void setup() {
   WiFi.begin(ssid, pass);
   int retry = 1;
   while (WiFi.status() != WL_CONNECTED) {
-    WiFi.begin(ssid, pass);
+    //WiFi.begin(ssid, pass);
     lcd.setCursor(0, 0);
     lcd.print("Connecting WiFi Ewake");
     lcd.setCursor(1, 1);

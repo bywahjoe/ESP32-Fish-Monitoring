@@ -5,8 +5,8 @@
 #define myapi "3Q78NW6JQJD18X4T"
 #define myid  1383116
 
-#define ssid "robotku"
-#define pass "robot1234"
+#define ssid "iwake"
+#define pass "12345678"
 
-#define myblynk "uPgIWEteat_fblexZnSM3K88BdC1p_EO"
+#define myblynk "zsMA9FAlvV2L-XkPXi1z4z2R2nBr1wl2"
 #define BLYNK_PRINT Serial
